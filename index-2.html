@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intent AI — AI Strategy, Automation & Custom Development</title>
+<meta name="description" content="Intent AI helps small and mid-size businesses harness the power of AI through strategic consulting, workflow automation, and custom AI development.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07080A;
+    --bg2: #0D0F14;
+    --bg3: #111520;
+    --surface: #161B27;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --accent: #00E5FF;
+    --accent2: #7B5CFA;
+    --accent3: #00FFA3;
+    --text: #F0F2F8;
+    --muted: #7A8099;
+    --muted2: #A8B0C8;
+    --grad: linear-gradient(135deg, #00E5FF 0%, #7B5CFA 100%);
+    --font-head: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.4; }
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+  section { position: relative; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.2rem 2rem; display: flex; align-items: center; justify-content: space-between; background: rgba(7,8,10,0.75); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: var(--font-head); font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.875rem; color: var(--muted2); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { font-size: 0.875rem; font-weight: 500; color: var(--bg); background: var(--accent); padding: 0.55rem 1.4rem; border-radius: 999px; text-decoration: none; transition: opacity 0.2s, transform 0.2s; white-space: nowrap; }
+  .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--muted2); border-radius: 2px; }
+  .mobile-menu { display: none; position: fixed; top: 65px; left: 0; right: 0; z-index: 99; background: rgba(7,8,10,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem 2rem; flex-direction: column; gap: 1.5rem; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--muted2); text-decoration: none; font-size: 1rem; }
+  .mobile-menu .nav-cta { align-self: flex-start; color: var(--bg); }
+
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 0 6rem; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(0,229,255,0.2); background: rgba(0,229,255,0.05); padding: 0.35rem 0.9rem; border-radius: 999px; margin-bottom: 1.75rem; }
+  .hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse-dot 2s ease-in-out infinite; }
+  @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)} }
+  h1 { font-family: var(--font-head); font-size: clamp(2.8rem, 5.5vw, 5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+  .h1-line2 { display: block; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: 1.125rem; color: var(--muted2); line-height: 1.7; max-width: 480px; margin-bottom: 2.5rem; font-weight: 300; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: var(--bg); font-size: 0.9375rem; font-weight: 500; padding: 0.85rem 2rem; border-radius: 999px; text-decoration: none; transition: opacity 0.2s, transform 0.2s; }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+  .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--muted2); font-size: 0.9375rem; font-weight: 400; padding: 0.85rem 2rem; border-radius: 999px; text-decoration: none; border: 1px solid var(--border2); transition: all 0.2s; }
+  .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
+
+  .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+  .orb-wrap { position: relative; width: 420px; height: 420px; flex-shrink: 0; }
+  .orb { width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle at 40% 40%, rgba(0,229,255,0.35) 0%, rgba(123,92,250,0.25) 50%, transparent 75%); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: orb-float 6s ease-in-out infinite; filter: blur(2px); }
+  @keyframes orb-float { 0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-54%) scale(1.04)} }
+  .orb-ring { width: 340px; height: 340px; border-radius: 50%; border: 1px solid rgba(0,229,255,0.15); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: ring-spin 20s linear infinite; }
+  .orb-ring::after { content: ''; position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); top: 10px; left: 50%; transform: translateX(-50%); box-shadow: 0 0 12px var(--accent); }
+  @keyframes ring-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+  .orb-ring2 { width: 410px; height: 410px; border-radius: 50%; border: 1px solid rgba(123,92,250,0.1); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: ring-spin 35s linear infinite reverse; }
+  .orb-ring2::after { content: ''; position: absolute; width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); top: 8px; left: 50%; transform: translateX(-50%); box-shadow: 0 0 10px var(--accent2); }
+  .stat-chip { position: absolute; background: var(--surface); border: 1px solid var(--border2); border-radius: 14px; padding: 0.75rem 1.1rem; font-size: 0.8125rem; white-space: nowrap; animation: chip-float 5s ease-in-out infinite; backdrop-filter: blur(10px); }
+  .stat-chip .val { font-family: var(--font-head); font-size: 1.25rem; font-weight: 700; }
+  .stat-chip.c1 { top: 12%; left: -5%; }
+  .stat-chip.c2 { bottom: 18%; right: -5%; animation-delay: 1.8s; }
+  .stat-chip.c3 { top: 60%; left: -8%; animation-delay: 0.9s; }
+  @keyframes chip-float { 0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)} }
+  .chip-label { color: var(--muted); font-size: 0.6875rem; display: block; margin-top: 1px; }
+
+  .section-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 1rem; }
+  h2 { font-family: var(--font-head); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 1.25rem; }
+  .section-sub { font-size: 1.0625rem; color: var(--muted2); line-height: 1.7; max-width: 540px; font-weight: 300; }
+
+  .services { padding: 7rem 0; }
+  .services-header { text-align: center; margin-bottom: 4rem; }
+  .services-header .section-sub { margin: 0 auto; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--border); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
+  .service-card { background: var(--bg2); padding: 2.5rem; position: relative; overflow: hidden; transition: background 0.3s; }
+  .service-card:hover { background: var(--bg3); }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); opacity: 0; transition: opacity 0.3s; }
+  .service-card:hover::before { opacity: 1; }
+  .svc-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.75rem; font-size: 1.4rem; }
+  .svc-icon.cyan { background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.2); }
+  .svc-icon.purple { background: rgba(123,92,250,0.1); border: 1px solid rgba(123,92,250,0.2); }
+  .svc-icon.green { background: rgba(0,255,163,0.08); border: 1px solid rgba(0,255,163,0.15); }
+  .service-card h3 { font-family: var(--font-head); font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.85rem; }
+  .service-card p { font-size: 0.9375rem; color: var(--muted2); line-height: 1.7; font-weight: 300; }
+  .svc-bullets { margin-top: 1.5rem; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .svc-bullets li { font-size: 0.8125rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
+  .svc-bullets li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+  .process { padding: 7rem 0; background: var(--bg2); }
+  .process-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .step-list { display: flex; flex-direction: column; margin-top: 2.5rem; }
+  .step { display: flex; gap: 1.5rem; padding: 1.75rem 0; border-bottom: 1px solid var(--border); }
+  .step:first-child { border-top: 1px solid var(--border); }
+  .step-num { font-family: var(--font-head); font-size: 0.75rem; font-weight: 700; color: var(--muted); padding-top: 4px; min-width: 24px; letter-spacing: 0.05em; }
+  .step-content h4 { font-family: var(--font-head); font-size: 1.0625rem; font-weight: 700; margin-bottom: 0.4rem; letter-spacing: -0.01em; }
+  .step-content p { font-size: 0.9rem; color: var(--muted2); font-weight: 300; line-height: 1.6; }
+  .process-visual { background: var(--bg3); border: 1px solid var(--border2); border-radius: 20px; padding: 2.5rem; }
+  .process-visual h4 { font-family: var(--font-head); font-size: 0.875rem; color: var(--muted); margin-bottom: 1.5rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .code-block { background: var(--bg); border-radius: 12px; padding: 1.5rem; border: 1px solid var(--border); font-family: 'Courier New', monospace; font-size: 0.8rem; line-height: 1.8; color: var(--muted2); }
+  .code-block .kw { color: var(--accent2); }
+  .code-block .str { color: var(--accent3); }
+  .code-block .fn { color: var(--accent); }
+  .code-block .cmt { color: var(--muted); }
+
+  .why { padding: 7rem 0; }
+  .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 4rem; }
+  .why-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 18px; padding: 2rem; transition: border-color 0.3s; }
+  .why-card:hover { border-color: var(--border2); }
+  .why-card:first-child { grid-column: span 2; display: flex; gap: 2rem; align-items: flex-start; }
+  .why-num { font-family: var(--font-head); font-size: 3.5rem; font-weight: 800; line-height: 1; letter-spacing: -0.04em; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
+  .why-card h3 { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; letter-spacing: -0.01em; }
+  .why-card p { font-size: 0.9375rem; color: var(--muted2); line-height: 1.7; font-weight: 300; }
+
+  .cta-section { padding: 8rem 0; text-align: center; position: relative; overflow: hidden; }
+  .cta-glow { position: absolute; width: 600px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(123,92,250,0.15) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
+  .cta-section h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
+  .cta-section .section-sub { margin: 1.25rem auto 2.5rem; text-align: center; }
+  .cta-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .contact-note { margin-top: 2rem; font-size: 0.875rem; color: var(--muted); }
+
+  footer { border-top: 1px solid var(--border); padding: 3rem 0; }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+  .footer-logo { font-family: var(--font-head); font-size: 1.125rem; font-weight: 800; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+  .footer-links a { font-size: 0.875rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text); }
+  .footer-copy { font-size: 0.8125rem; color: var(--muted); }
+
+  @keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { animation: fade-up 0.7s ease both; }
+  .d1{animation-delay:.1s}.d2{animation-delay:.22s}.d3{animation-delay:.34s}.d4{animation-delay:.46s}
+
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-visual { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .process-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .why-grid { grid-template-columns: 1fr; }
+    .why-card:first-child { grid-column: span 1; flex-direction: column; gap: 0.75rem; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Intent AI</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">How we work</a></li>
+    <li><a href="#why">Why us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get started →</a>
+  <button class="hamburger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#process" class="mobile-link">How we work</a>
+  <a href="#why" class="mobile-link">Why us</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#contact" class="nav-cta">Get started →</a>
+</div>
+
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow fade-up d1">AI built for real business outcomes</div>
+        <h1 class="fade-up d2">AI that works<br><span class="h1-line2">with intent.</span></h1>
+        <p class="hero-sub fade-up d3">We help small and mid-size businesses move beyond the AI hype — delivering strategy, automation, and custom-built solutions that actually drive results.</p>
+        <div class="hero-actions fade-up d4">
+          <a href="#contact" class="btn-primary">Start a conversation →</a>
+          <a href="#services" class="btn-ghost">Explore services</a>
+        </div>
+      </div>
+      <div class="hero-visual fade-up d3">
+        <div class="orb-wrap">
+          <div class="orb"></div>
+          <div class="orb-ring"></div>
+          <div class="orb-ring2"></div>
+          <div class="stat-chip c1">
+            <span class="val" style="color:var(--accent)">3×</span>
+            <span class="chip-label">Average efficiency gain</span>
+          </div>
+          <div class="stat-chip c2">
+            <span class="val" style="color:var(--accent2)">14 days</span>
+            <span class="chip-label">To first automation live</span>
+          </div>
+          <div class="stat-chip c3">
+            <span class="val" style="color:var(--accent3)">SMB-first</span>
+            <span class="chip-label">Built for your scale</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header">
+      <div class="section-label">What we do</div>
+      <h2>Three ways we drive your AI advantage</h2>
+      <p class="section-sub">Every engagement is tailored. No off-the-shelf packages. No bloated retainers. Just focused work that moves the needle.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="svc-icon cyan">🧭</div>
+        <h3>AI Strategy & Consulting</h3>
+        <p>Cut through the noise. We audit your operations, identify the highest-ROI AI opportunities, and build you a clear, prioritised roadmap.</p>
+        <ul class="svc-bullets">
+          <li>AI readiness assessment</li>
+          <li>Use-case prioritisation workshop</li>
+          <li>Vendor & tool selection</li>
+          <li>Board-ready AI roadmap</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon purple">⚡</div>
+        <h3>Automation & Workflows</h3>
+        <p>Turn repetitive tasks into automated pipelines. From document processing to customer communications — we wire up AI that runs while you sleep.</p>
+        <ul class="svc-bullets">
+          <li>Process mapping & automation audit</li>
+          <li>n8n, Make & Zapier integrations</li>
+          <li>LLM-powered document workflows</li>
+          <li>CRM & operations automation</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon green">🛠</div>
+        <h3>Custom AI Development</h3>
+        <p>When off-the-shelf isn't enough. We design and build custom AI tools — chatbots, internal agents, API integrations — tailored to your exact needs.</p>
+        <ul class="svc-bullets">
+          <li>Custom LLM applications</li>
+          <li>Internal knowledge assistants</li>
+          <li>AI-powered API integrations</li>
+          <li>Prototype to production</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="container">
+    <div class="process-inner">
+      <div>
+        <div class="section-label">How we work</div>
+        <h2>From first call to live in production</h2>
+        <p class="section-sub">A focused four-step process designed for businesses that need results fast, not six-month consulting engagements.</p>
+        <div class="step-list">
+          <div class="step">
+            <span class="step-num">01</span>
+            <div class="step-content">
+              <h4>Discovery call</h4>
+              <p>We learn your business, your bottlenecks, and your goals. No fluff — just the information we need to give you real recommendations.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">02</span>
+            <div class="step-content">
+              <h4>Strategy & scoping</h4>
+              <p>We deliver a prioritised action plan with clear ROI projections. You choose what to tackle first.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">03</span>
+            <div class="step-content">
+              <h4>Build & integrate</h4>
+              <p>Our team builds, tests, and integrates — with constant communication so there are no surprises at launch.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">04</span>
+            <div class="step-content">
+              <h4>Handoff & support</h4>
+              <p>We train your team, document everything, and stay on hand for 30 days post-launch. You own it fully.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="process-visual">
+        <h4>// Sample automation</h4>
+        <div class="code-block">
+<span class="cmt"># Inbound lead → CRM + Slack alert</span><br>
+<span class="kw">trigger</span>: <span class="str">email.received</span><br>
+<br>
+<span class="fn">extract_data</span>(<br>
+&nbsp;&nbsp;fields: [<span class="str">"name"</span>, <span class="str">"company"</span>, <span class="str">"intent"</span>]<br>
+)<br>
+<br>
+<span class="fn">score_lead</span>(model: <span class="str">"intent-classifier"</span>)<br>
+<br>
+<span class="kw">if</span> score &gt; <span class="str">0.8</span>:<br>
+&nbsp;&nbsp;<span class="fn">crm.create_contact</span>()<br>
+&nbsp;&nbsp;<span class="fn">slack.alert</span>(<span class="str">"#sales"</span>)<br>
+&nbsp;&nbsp;<span class="fn">email.send_reply</span>(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;template: <span class="str">"warm_followup"</span><br>
+&nbsp;&nbsp;)<br>
+<br>
+<span class="cmt"># ✓ From inbox to CRM in &lt;3 seconds</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="container">
+    <div class="section-label">Why Intent AI</div>
+    <h2>We've done this before.<br>For businesses like yours.</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">87%</div>
+        <div>
+          <h3>Of SMBs are leaving AI ROI on the table</h3>
+          <p>Most small businesses know AI matters — but don't know where to start, or they've tried generic tools that didn't fit. We bridge that gap with implementation specific to your workflows, your tools, and your team's capacity.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <h3>No junior consultants</h3>
+        <p>Every engagement is handled by senior AI practitioners. You get the expertise, not the pitch deck.</p>
+      </div>
+      <div class="why-card">
+        <h3>SMB-native pricing</h3>
+        <p>We price for businesses with real budgets — not enterprise retainers that assume a 50-person ops team.</p>
+      </div>
+      <div class="why-card">
+        <h3>You own everything</h3>
+        <p>Code, prompts, workflows, documentation. No lock-in. No dependency on us to keep the lights on.</p>
+      </div>
+      <div class="why-card">
+        <h3>Outcome-focused</h3>
+        <p>We measure success by your metrics — hours saved, revenue influenced, errors reduced — not deliverable count.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="cta-glow"></div>
+  <div class="container">
+    <div class="section-label" style="text-align:center">Let's talk</div>
+    <h2>Ready to build with intention?</h2>
+    <p class="section-sub">Book a free 30-minute strategy call. No commitment — just an honest conversation about where AI can move the needle for your business.</p>
+    <div class="cta-actions">
+      <a href="mailto:hello@intentai.com" class="btn-primary">Book a free strategy call →</a>
+      <a href="mailto:hello@intentai.com" class="btn-ghost">hello@intentai.com</a>
+    </div>
+    <p class="contact-note">Based in the US &nbsp;·&nbsp; Serving clients globally</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-logo">Intent AI</span>
+      <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#why">Why us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <span class="footer-copy">© 2026 Intent AI. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.service-card, .why-card, .step').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
